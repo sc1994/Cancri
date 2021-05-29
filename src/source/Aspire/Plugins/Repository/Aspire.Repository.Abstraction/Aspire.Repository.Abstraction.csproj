@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+		<DocumentationFile>Aspire.Repository.Abstraction.xml</DocumentationFile>
+	</PropertyGroup>
+
+	<ItemGroup>
+	  <None Remove="Aspire.Repository.Abstraction.xml" />
+	</ItemGroup>
+
+	<ItemGroup>
+    <PackageReference Include="StyleCop.Analyzers" Version="1.1.118">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\..\..\Core\Aspire.Utilities\Aspire.Utilities.csproj" />
+	  <ProjectReference Include="..\..\Entity\Aspire.Entity.Abstraction\Aspire.Entity.Abstraction.csproj" />
+	</ItemGroup>
+
+</Project>

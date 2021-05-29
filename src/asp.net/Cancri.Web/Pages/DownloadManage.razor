@@ -1,0 +1,40 @@
+@using Microsoft.Extensions.Logging;
+
+@page "/download-manage"
+@inject ILogger<DownloadManage> logger;
+@inject IJSRuntime js;
+@inject HttpClient request;
+
+<PageContainer Title="下载管理">
+    <AntDesign.Input @bind-Value="rootPath">
+        <AddOnBefore>root</AddOnBefore>
+        <AddOnAfter>
+            <Icon Type="setting" OnClick="@setRootPath"></Icon>
+        </AddOnAfter>
+    </AntDesign.Input>
+</PageContainer>
+
+@code{
+    string rootPath = "/";
+    const string downloadRootPathKey = "down_load_root_path";
+
+    private async void setRootPath()
+    {
+        this.logger.LogInformation("setRootPath:{0}", rootPath);
+
+        var res = await request.GetAsync("http://localhost:5001/api/file");
+
+        this.logger.LogInformation(await res.Content.ReadAsStringAsync());
+
+        await this.js.InvokeVoidAsync("localStorage.setItem", "down_load_root_path", rootPath);
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        var jsRes = await this.js.InvokeAsync<string>("localStorage.getItem", "down_load_root_path");
+        this.logger.LogInformation("OnInitializedAsync:{0}", jsRes);
+        this.rootPath = jsRes;
+
+        await base.OnInitializedAsync();
+    }
+}

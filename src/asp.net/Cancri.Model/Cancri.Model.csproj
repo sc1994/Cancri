@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net5.0</TargetFramework>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+		<DocumentationFile>Cancri.Model.xml</DocumentationFile>
+	</PropertyGroup>
+
+	<ItemGroup>
+	  <None Remove="Cancri.Model.xml" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\..\source\Aspire\Plugins\Entity\Aspire.Entity.FreeSql\Aspire.Entity.FreeSql.csproj" />
+		<ProjectReference Include="..\..\source\Aspire\Plugins\Repository\Aspire.Repository.FreeSql\Aspire.Repository.FreeSql.csproj" />
+		<PackageReference Include="StyleCop.Analyzers" Version="1.1.118">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+	</ItemGroup>
+
+</Project>

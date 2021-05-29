@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Cancri.Web</name>
+    </assembly>
+    <members>
+        <member name="T:Cancri.Web.Program">
+            <summary>
+            program.
+            </summary>
+        </member>
+        <member name="M:Cancri.Web.Program.Main(System.String[])">
+            <summary>
+            main.
+            </summary>
+            <param name="args">startup params.</param>
+            <returns>void.</returns>
+        </member>
+        <member name="T:Cancri.Web.Program.CustomLoggingProvider">
+            <inheritdoc/>
+        </member>
+        <member name="M:Cancri.Web.Program.CustomLoggingProvider.CreateLogger(System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Cancri.Web.Program.CustomLoggingProvider.Dispose">
+            <inheritdoc/>
+        </member>
+    </members>
+</doc>

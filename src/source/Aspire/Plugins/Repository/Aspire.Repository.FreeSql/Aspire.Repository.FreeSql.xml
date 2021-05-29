@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Aspire.Repository.FreeSql</name>
+    </assembly>
+    <members>
+        <member name="T:Aspire.Repository.RepositoryFreeSql`2">
+            <inheritdoc/>
+        </member>
+        <member name="M:Aspire.Repository.RepositoryFreeSql`2.#ctor(IFreeSql)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Aspire.Repository.RepositoryFreeSql`2"/> class.
+            </summary>
+            <param name="freeSql">free sql instance.</param>
+        </member>
+        <member name="M:Aspire.Repository.RepositoryFreeSql`2.DeleteBatchAsync(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
+            <inheritdoc/>
+        </member>
+        <member name="M:Aspire.Repository.RepositoryFreeSql`2.GetListAsync(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Int64)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Aspire.Repository.RepositoryFreeSql`2.InsertBatchAsync(`0[])">
+            <inheritdoc/>
+        </member>
+        <member name="M:Aspire.Repository.RepositoryFreeSql`2.InsertThenEntityAsync(`0)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Aspire.Repository.RepositoryFreeSql`2.UpdateBatchAsync(`0[])">
+            <inheritdoc/>
+        </member>
+        <member name="T:Aspire.Repository.RepositoryFreeSql`1">
+            <inheritdoc/>
+        </member>
+        <member name="M:Aspire.Repository.RepositoryFreeSql`1.#ctor(IFreeSql)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Aspire.Repository.RepositoryFreeSql`1"/> class.
+            </summary>
+            <param name="freeSql">free sql instance.</param>
+        </member>
+        <member name="T:Aspire.Repository.RepositoryFreeSqlService">
+            <summary>
+            free sql injecting services.
+            </summary>
+        </member>
+        <member name="M:Aspire.Repository.RepositoryFreeSqlService.AddRepositoryFreeSql(Microsoft.Extensions.DependencyInjection.IServiceCollection,FreeSql.DataType,System.String,System.EventHandler{FreeSql.Aop.AuditValueEventArgs},System.EventHandler{FreeSql.Aop.CurdAfterEventArgs},System.EventHandler{FreeSql.Aop.CurdBeforeEventArgs})">
+            <summary>
+            add.
+            </summary>
+            <param name="services">service collection.</param>
+            <param name="dataType">data base type.</param>
+            <param name="connectionString">connection string.</param>
+            <param name="auditValueEvent">audit value event.</param>
+            <param name="curdAfterEvent">curd after event.</param>
+            <param name="curdBeforeEvent">curd before event.</param>
+            <returns>remain service collection.</returns>
+        </member>
+    </members>
+</doc>

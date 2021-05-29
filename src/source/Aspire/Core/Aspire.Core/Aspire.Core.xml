@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Aspire.Core</name>
+    </assembly>
+    <members>
+        <member name="T:Aspire.Core.IApplication">
+            <summary>
+            Application.
+            </summary>
+        </member>
+        <member name="T:Aspire.Core.IModule">
+            <summary>
+            Module.
+            </summary>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,124 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Aspire.Repository.Abstraction</name>
+    </assembly>
+    <members>
+        <member name="T:Aspire.Repository.IRepository`2">
+            <summary>
+            repository.
+            </summary>
+            <typeparam name="TEntity">entity.</typeparam>
+            <typeparam name="TPrimaryKey">primary key.</typeparam>
+        </member>
+        <member name="M:Aspire.Repository.IRepository`2.InsertAsync(`0)">
+            <summary>
+            insert.
+            </summary>
+            <param name="entity">entity.</param>
+            <returns>成功与否.</returns>
+        </member>
+        <member name="M:Aspire.Repository.IRepository`2.InsertThenEntityAsync(`0)">
+            <summary>
+            insert and get the entity.
+            </summary>
+            <param name="entity">entity.</param>
+            <returns>inserted entity.</returns>
+        </member>
+        <member name="M:Aspire.Repository.IRepository`2.InsertBatchAsync(`0[])">
+            <summary>
+            batch insert.
+            </summary>
+            <param name="entities">entity array.</param>
+            <returns>影响行数.</returns>
+        </member>
+        <member name="M:Aspire.Repository.IRepository`2.InsertBatchAsync(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            batch insert.
+            </summary>
+            <param name="entities">entity array.</param>
+            <returns>影响行数.</returns>
+        </member>
+        <member name="M:Aspire.Repository.IRepository`2.DeleteAsync(`1)">
+            <summary>
+            delete.
+            </summary>
+            <param name="primaryKey">primary key.</param>
+            <returns>成功与否.</returns>
+        </member>
+        <member name="M:Aspire.Repository.IRepository`2.DeleteBatchAsync(`1[])">
+            <summary>
+            batch delete.
+            </summary>
+            <param name="primaryKeys">primary key array.</param>
+            <returns>影响行数.</returns>
+        </member>
+        <member name="M:Aspire.Repository.IRepository`2.DeleteBatchAsync(System.Collections.Generic.IEnumerable{`1})">
+            <summary>
+            batch delete.
+            </summary>
+            <param name="primaryKeys">primary key array.</param>
+            <returns>影响行数.</returns>
+        </member>
+        <member name="M:Aspire.Repository.IRepository`2.DeleteBatchAsync(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
+            <summary>
+            batch delete.
+            </summary>
+            <param name="filter">过滤条件.</param>
+            <returns>影响行数.</returns>
+        </member>
+        <member name="M:Aspire.Repository.IRepository`2.UpdateAsync(`0)">
+            <summary>
+            update.
+            </summary>
+            <param name="newEntity">new entity.</param>
+            <returns>成功与否.</returns>
+        </member>
+        <member name="M:Aspire.Repository.IRepository`2.UpdateBatchAsync(`0[])">
+            <summary>
+            batch update.
+            </summary>
+            <param name="newEntities">new entitiy array.</param>
+            <returns>影响行数.</returns>
+        </member>
+        <member name="M:Aspire.Repository.IRepository`2.UpdateBatchAsync(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            batch update.
+            </summary>
+            <param name="newEntities">new entitiy array.</param>
+            <returns>影响行数.</returns>
+        </member>
+        <member name="M:Aspire.Repository.IRepository`2.GetAsync(`1)">
+            <summary>
+            get.
+            </summary>
+            <param name="primaryKey">primary key.</param>
+            <returns>list.</returns>
+        </member>
+        <member name="M:Aspire.Repository.IRepository`2.GetListAsync(`1[])">
+            <summary>
+            get list.
+            </summary>
+            <param name="primaryKeys">primary key array.</param>
+            <returns>list.</returns>
+        </member>
+        <member name="M:Aspire.Repository.IRepository`2.GetListAsync(System.Collections.Generic.IEnumerable{`1})">
+            <summary>
+            get list.
+            </summary>
+            <param name="primaryKeys">primary key array.</param>
+            <returns>list.</returns>
+        </member>
+        <member name="M:Aspire.Repository.IRepository`2.GetListAsync(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Int64)">
+            <summary>
+            get list.
+            </summary>
+            <param name="filter">filter.</param>
+            <param name="limit">default no limit.</param>
+            <returns>list.</returns>
+        </member>
+        <member name="T:Aspire.Repository.IRepository`1">
+            <inheritdoc/>
+        </member>
+    </members>
+</doc>

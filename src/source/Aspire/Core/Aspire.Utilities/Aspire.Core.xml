@@ -1,0 +1,107 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Aspire.Utilities</name>
+    </assembly>
+    <members>
+        <member name="T:Aspire.LinqUtility">
+            <summary>
+            Linq 工具.
+            </summary>
+        </member>
+        <member name="M:Aspire.LinqUtility.ForEach``1(``0[],System.Action{``0})">
+            <summary>
+            迭代 Array.
+            </summary>
+            <typeparam name="T">T.</typeparam>
+            <param name="array">array.</param>
+            <param name="action">action.</param>
+        </member>
+        <member name="M:Aspire.LinqUtility.ForEach``1(System.Collections.Generic.IEnumerable{``0},System.Action{``0})">
+            <summary>
+            迭代 IEnumerable.
+            </summary>
+            <typeparam name="T">T.</typeparam>
+            <param name="array">array.</param>
+            <param name="action">action.</param>
+        </member>
+        <member name="M:Aspire.LinqUtility.FirstOrDefaultAsync``1(System.Threading.Tasks.Task{System.Collections.Generic.IEnumerable{``0}},System.Func{``0,System.Boolean})">
+            <summary>
+            第一个或者默认.
+            </summary>
+            <typeparam name="T">T.</typeparam>
+            <param name="sourceAsync">Source Async.</param>
+            <param name="predicate">Predicate.</param>
+            <returns>Task T.</returns>
+        </member>
+        <member name="M:Aspire.LinqUtility.FirstOrDefaultAsync``1(System.Threading.Tasks.Task{System.Collections.Generic.List{``0}},System.Func{``0,System.Boolean})">
+            <summary>
+            第一个或者默认.
+            </summary>
+            <typeparam name="T">T.</typeparam>
+            <param name="sourceAsync">Source Async.</param>
+            <param name="predicate">Predicate.</param>
+            <returns>Task T.</returns>
+        </member>
+        <member name="M:Aspire.LinqUtility.ToListAsync``1(System.Threading.Tasks.Task{System.Collections.Generic.IEnumerable{``0}})">
+            <summary>
+            To List.
+            </summary>
+            <typeparam name="T">T.</typeparam>
+            <param name="sourceAsync">Source Async.</param>
+            <returns>Task T.</returns>
+        </member>
+        <member name="M:Aspire.LinqUtility.ToArrayAsync``1(System.Threading.Tasks.Task{System.Collections.Generic.IEnumerable{``0}})">
+            <summary>
+            To Array.
+            </summary>
+            <typeparam name="T">T.</typeparam>
+            <param name="sourceAsync">Source Async.</param>
+            <returns>Task T.</returns>
+        </member>
+        <member name="M:Aspire.LinqUtility.ToArrayAsync``1(System.Threading.Tasks.Task{System.Collections.Generic.List{``0}})">
+            <summary>
+            To Array.
+            </summary>
+            <typeparam name="T">T.</typeparam>
+            <param name="sourceAsync">Source Async.</param>
+            <returns>Task T.</returns>
+        </member>
+        <member name="M:Aspire.LinqUtility.SelectAsync``2(System.Threading.Tasks.Task{System.Collections.Generic.IEnumerable{``0}},System.Func{``0,``1})">
+            <summary>
+            async select.
+            </summary>
+            <typeparam name="T">source.</typeparam>
+            <typeparam name="TResult">result.</typeparam>
+            <param name="sourceAsync">source async array.</param>
+            <param name="selector">selector.</param>
+            <returns>result async enumerable.</returns>
+        </member>
+        <member name="M:Aspire.LinqUtility.SelectAsync``2(System.Threading.Tasks.Task{``0[]},System.Func{``0,System.Int32,``1})">
+            <summary>
+            async select.
+            </summary>
+            <typeparam name="T">source.</typeparam>
+            <typeparam name="TResult">result.</typeparam>
+            <param name="sourceAsync">source async array.</param>
+            <param name="selector">selector.</param>
+            <returns>result async enumerable.</returns>
+        </member>
+        <member name="M:Aspire.LinqUtility.Join(System.Collections.Generic.IEnumerable{System.String},System.String)">
+            <summary>
+            join.
+            </summary>
+            <param name="source">Source.</param>
+            <param name="separator">Separator.</param>
+            <returns>String.</returns>
+        </member>
+        <member name="M:Aspire.LinqUtility.AnyAsync``1(System.Threading.Tasks.Task{System.Collections.Generic.IEnumerable{``0}})">
+            <summary>
+            any.
+            </summary>
+            <typeparam name="T">source type.</typeparam>
+            <param name="sourceAsync">source.</param>
+            <returns>String.</returns>
+        </member>
+    </members>
+</doc>

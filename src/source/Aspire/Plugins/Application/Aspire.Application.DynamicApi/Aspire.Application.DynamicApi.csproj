@@ -1,0 +1,28 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net5.0</TargetFramework>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+		<DocumentationFile>Aspire.Application.DynamicApi.xml</DocumentationFile>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<None Remove="Aspire.Application.DynamicApi.xml" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Panda.DynamicWebApi" Version="1.1.0" />
+		<PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="5.0.0" />
+		<PackageReference Include="StyleCop.Analyzers" Version="1.1.118">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\Aspire.Application.Crud.Abstraction\Aspire.Application.Crud.Abstraction.csproj" />
+	</ItemGroup>
+
+</Project>

@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Cancri.Service</name>
+    </assembly>
+    <members>
+        <member name="T:Cancri.Service.FileService.FileAppService">
+            <summary>
+            file service.
+            </summary>
+        </member>
+        <member name="T:Cancri.Service.Program">
+            <summary>
+            program.
+            </summary>
+        </member>
+        <member name="M:Cancri.Service.Program.Main(System.String[])">
+            <summary>
+            main.
+            </summary>
+            <param name="args">args.</param>
+        </member>
+        <member name="M:Cancri.Service.Program.CreateHostBuilder(System.String[])">
+            <summary>
+            create host.
+            </summary>
+            <param name="args">args.</param>
+            <returns>host builder.</returns>
+        </member>
+        <member name="T:Cancri.Service.Startup">
+            <summary>
+            startup.
+            </summary>
+        </member>
+        <member name="M:Cancri.Service.Startup.ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            This method gets called by the runtime. Use this method to add services to the container.
+            </summary>
+            <param name="services">services.</param>
+        </member>
+        <member name="M:Cancri.Service.Startup.Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IWebHostEnvironment)">
+            <summary>
+            This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+            </summary>
+            <param name="app">app.</param>
+            <param name="env">env.</param>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Aspire.Entity.Abstraction</name>
+    </assembly>
+    <members>
+        <member name="T:Aspire.Entity.IEntity`1">
+            <summary>
+            entity.
+            </summary>
+            <typeparam name="TPrimaryKey">primary key.</typeparam>
+        </member>
+        <member name="P:Aspire.Entity.IEntity`1.Id">
+            <summary>
+            Gets or sets id.
+            </summary>
+        </member>
+        <member name="T:Aspire.Entity.IEntity">
+            <inheritdoc/>
+        </member>
+    </members>
+</doc>
