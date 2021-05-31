@@ -23,11 +23,8 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<Folder Include="FileService\Dto\" />
-	</ItemGroup>
-
-	<ItemGroup>
 		<ProjectReference Include="..\..\source\Aspire\Plugins\Application\Aspire.Application.DynamicApi\Aspire.Application.DynamicApi.csproj" />
+		<ProjectReference Include="..\Cancri.Dto\Cancri.Dto.csproj" />
 		<ProjectReference Include="..\Cancri.Model\Cancri.Model.csproj" />
 	</ItemGroup>
 

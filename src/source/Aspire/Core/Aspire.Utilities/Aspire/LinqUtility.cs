@@ -22,10 +22,7 @@ namespace Aspire
         /// <param name="action">action.</param>
         public static void ForEach<T>(this T[] array, Action<T> action)
         {
-            foreach (var item in array)
-            {
-                action(item);
-            }
+            array.ToList().ForEach(action);
         }
 
         /// <summary>
@@ -36,10 +33,7 @@ namespace Aspire
         /// <param name="action">action.</param>
         public static void ForEach<T>(this IEnumerable<T> array, Action<T> action)
         {
-            foreach (var item in array)
-            {
-                action(item);
-            }
+            array.ToList().ForEach(action);
         }
 
         /// <summary>
@@ -69,7 +63,7 @@ namespace Aspire
         }
 
         /// <summary>
-        /// To List.
+        /// async to list.
         /// </summary>
         /// <typeparam name="T">T.</typeparam>
         /// <param name="sourceAsync">Source Async.</param>
@@ -81,7 +75,7 @@ namespace Aspire
         }
 
         /// <summary>
-        /// To Array.
+        /// async to array.
         /// </summary>
         /// <typeparam name="T">T.</typeparam>
         /// <param name="sourceAsync">Source Async.</param>
@@ -92,7 +86,7 @@ namespace Aspire
         }
 
         /// <summary>
-        /// To Array.
+        /// async to array.
         /// </summary>
         /// <typeparam name="T">T.</typeparam>
         /// <param name="sourceAsync">Source Async.</param>

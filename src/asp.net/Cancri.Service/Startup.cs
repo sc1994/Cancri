@@ -4,6 +4,12 @@
 
 namespace Cancri.Service
 {
+    using System;
+    using System.IO;
+    using System.Linq;
+    using System.Xml;
+
+    using Aspire;
     using Aspire.Application;
 
     using Microsoft.AspNetCore.Builder;
@@ -11,6 +17,7 @@ namespace Cancri.Service
     using Microsoft.AspNetCore.StaticFiles;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Hosting;
+    using Microsoft.Extensions.Logging;
     using Microsoft.OpenApi.Models;
 
     /// <summary>
@@ -41,7 +48,8 @@ namespace Cancri.Service
         /// </summary>
         /// <param name="app">app.</param>
         /// <param name="env">env.</param>
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        /// <param name="logger">logger.</param>
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILogger<Startup> logger)
         {
             if (env.IsDevelopment())
             {
@@ -53,26 +61,25 @@ namespace Cancri.Service
             app.UseRouting();
 
             app.UseDefaultFiles();
-
             var fileExtensionContentTypeProvider = new FileExtensionContentTypeProvider();
-            fileExtensionContentTypeProvider.Mappings.Remove(".blat");
-            fileExtensionContentTypeProvider.Mappings.Remove(".dll");
-            fileExtensionContentTypeProvider.Mappings.Remove(".dat");
-            fileExtensionContentTypeProvider.Mappings.Remove(".json");
-            fileExtensionContentTypeProvider.Mappings.Remove(".wasm");
-            fileExtensionContentTypeProvider.Mappings.Remove(".woff");
-            fileExtensionContentTypeProvider.Mappings.Remove(".woff2");
-            fileExtensionContentTypeProvider.Mappings.Remove(".css");
-            fileExtensionContentTypeProvider.Mappings.Remove(".js");
-            fileExtensionContentTypeProvider.Mappings.Add(".blat", "application/octet-stream");
-            fileExtensionContentTypeProvider.Mappings.Add(".dll", "application/octet-stream");
-            fileExtensionContentTypeProvider.Mappings.Add(".dat", "application/octet-stream");
-            fileExtensionContentTypeProvider.Mappings.Add(".json", "application/json");
-            fileExtensionContentTypeProvider.Mappings.Add(".wasm", "application/wasm");
-            fileExtensionContentTypeProvider.Mappings.Add(".woff", "application/font-woff");
-            fileExtensionContentTypeProvider.Mappings.Add(".woff2", "application/font-woff");
-            fileExtensionContentTypeProvider.Mappings.Add(".css", "application/css");
-            fileExtensionContentTypeProvider.Mappings.Add(".js", "application/javascript");
+            var webConfigPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "web.config");
+            logger.LogInformation("web config path: {0}", webConfigPath);
+
+            var webConfig = new XmlDocument();
+            webConfig.LoadXml(File.ReadAllText(webConfigPath));
+
+            // 简单解析一下 web config xml.
+            var mimeMaps = webConfig.DocumentElement.SelectNodes("/configuration/system.webServer/staticContent/mimeMap");
+            foreach (XmlNode item in mimeMaps)
+            {
+                var fileExtension = item.Attributes["fileExtension"].Value;
+                var mimeType = item.Attributes["mimeType"].Value;
+                logger.LogInformation("set type: {0}, mime: {1}.", fileExtension, mimeType);
+
+                fileExtensionContentTypeProvider.Mappings.Remove(fileExtension);
+                fileExtensionContentTypeProvider.Mappings.Add(fileExtension, mimeType);
+            }
+
             app.UseStaticFiles(new StaticFileOptions
             {
                 ContentTypeProvider = fileExtensionContentTypeProvider,

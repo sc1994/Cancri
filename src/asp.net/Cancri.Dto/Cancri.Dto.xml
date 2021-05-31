@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Cancri.Dto</name>
+    </assembly>
+    <members>
+        <member name="T:Cancri.Dto.FileService.FileItemDto">
+            <summary>
+            文件 项.
+            </summary>
+        </member>
+        <member name="M:Cancri.Dto.FileService.FileItemDto.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cancri.Dto.FileService.FileItemDto"/> class.
+            </summary>
+        </member>
+        <member name="M:Cancri.Dto.FileService.FileItemDto.#ctor(System.String,System.Boolean,System.Int64,System.DateTime,System.Nullable{System.DateTime})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cancri.Dto.FileService.FileItemDto"/> class.
+            </summary>
+            <param name="name">name.</param>
+            <param name="isFolder">is folder.</param>
+            <param name="sizeInByte">size in byte.</param>
+            <param name="createTime">创建时间.</param>
+            <param name="lastRevisionTime">最后写入时间.</param>
+        </member>
+        <member name="P:Cancri.Dto.FileService.FileItemDto.Name">
+            <summary>
+            Gets or sets name.
+            </summary>
+        </member>
+        <member name="P:Cancri.Dto.FileService.FileItemDto.IsFolder">
+            <summary>
+            Gets or sets a value indicating whether is folder.
+            </summary>
+        </member>
+        <member name="P:Cancri.Dto.FileService.FileItemDto.Size">
+            <summary>
+            Gets or sets size.
+            </summary>
+        </member>
+        <member name="P:Cancri.Dto.FileService.FileItemDto.CreateTime">
+            <summary>
+            Gets or sets 创建时间.
+            </summary>
+        </member>
+        <member name="P:Cancri.Dto.FileService.FileItemDto.LastWriteTime">
+            <summary>
+            Gets or sets 最后写入时间.
+            </summary>
+        </member>
+    </members>
+</doc>

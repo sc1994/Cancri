@@ -57,12 +57,16 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cancri.Service", "src\asp.n
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{49CA130E-E8C6-4F58-93F7-0F8069E6CC92}"
 	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
 		dev.bat = dev.bat
+		Dockerfile = Dockerfile
 		global.json = global.json
 		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aspire.Application.DynamicApi", "src\source\Aspire\Plugins\Application\Aspire.Application.DynamicApi\Aspire.Application.DynamicApi.csproj", "{B74D27E8-7013-4FB9-B41F-4DC704F018E1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Aspire.Application.DynamicApi", "src\source\Aspire\Plugins\Application\Aspire.Application.DynamicApi\Aspire.Application.DynamicApi.csproj", "{B74D27E8-7013-4FB9-B41F-4DC704F018E1}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cancri.Dto", "src\asp.net\Cancri.Dto\Cancri.Dto.csproj", "{BED47C4C-3CA6-411F-B87E-35E872E0C8CD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -266,6 +270,18 @@ Global
 		{B74D27E8-7013-4FB9-B41F-4DC704F018E1}.Release|x64.Build.0 = Release|Any CPU
 		{B74D27E8-7013-4FB9-B41F-4DC704F018E1}.Release|x86.ActiveCfg = Release|Any CPU
 		{B74D27E8-7013-4FB9-B41F-4DC704F018E1}.Release|x86.Build.0 = Release|Any CPU
+		{BED47C4C-3CA6-411F-B87E-35E872E0C8CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BED47C4C-3CA6-411F-B87E-35E872E0C8CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BED47C4C-3CA6-411F-B87E-35E872E0C8CD}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{BED47C4C-3CA6-411F-B87E-35E872E0C8CD}.Debug|x64.Build.0 = Debug|Any CPU
+		{BED47C4C-3CA6-411F-B87E-35E872E0C8CD}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{BED47C4C-3CA6-411F-B87E-35E872E0C8CD}.Debug|x86.Build.0 = Debug|Any CPU
+		{BED47C4C-3CA6-411F-B87E-35E872E0C8CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BED47C4C-3CA6-411F-B87E-35E872E0C8CD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BED47C4C-3CA6-411F-B87E-35E872E0C8CD}.Release|x64.ActiveCfg = Release|Any CPU
+		{BED47C4C-3CA6-411F-B87E-35E872E0C8CD}.Release|x64.Build.0 = Release|Any CPU
+		{BED47C4C-3CA6-411F-B87E-35E872E0C8CD}.Release|x86.ActiveCfg = Release|Any CPU
+		{BED47C4C-3CA6-411F-B87E-35E872E0C8CD}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -297,6 +313,7 @@ Global
 		{C486012A-E184-498F-9768-6FDBD47E58C8} = {34EE04F6-839D-41F3-B714-53FC3156C829}
 		{D292392E-97F8-4639-857D-DCDB0E32BF1C} = {34EE04F6-839D-41F3-B714-53FC3156C829}
 		{B74D27E8-7013-4FB9-B41F-4DC704F018E1} = {0E156EC6-9B08-488A-9CFE-6A50CF19E1E6}
+		{BED47C4C-3CA6-411F-B87E-35E872E0C8CD} = {34EE04F6-839D-41F3-B714-53FC3156C829}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {CD1AFE28-4471-4D63-BBA4-943F35366407}

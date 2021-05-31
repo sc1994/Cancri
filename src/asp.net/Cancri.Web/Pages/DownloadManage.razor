@@ -1,4 +1,6 @@
 @using Microsoft.Extensions.Logging;
+@using Cancri.Dto.FileService;
+@using System.Web;
 
 @page "/download-manage"
 @inject ILogger<DownloadManage> logger;
@@ -22,9 +24,9 @@
     {
         this.logger.LogInformation("setRootPath:{0}", rootPath);
 
-        var res = await request.GetAsync("http://localhost:5001/api/file");
+        var res = await request.GetAsync($"/api/file/{HttpUtility.UrlEncode(rootPath)}");
 
-        this.logger.LogInformation(await res.Content.ReadAsStringAsync());
+        var data = await res.Content.ReadFromJsonAsync<IEnumerable<FileItemDto>>();
 
         await this.js.InvokeVoidAsync("localStorage.setItem", "down_load_root_path", rootPath);
     }

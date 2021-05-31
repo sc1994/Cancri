@@ -13,16 +13,16 @@
             <summary>
             main.
             </summary>
-            <param name="args">startup params.</param>
+            <param name="args">args.</param>
             <returns>void.</returns>
         </member>
-        <member name="T:Cancri.Web.Program.CustomLoggingProvider">
+        <member name="T:Cancri.Web.Providers.CustomLoggingProvider">
             <inheritdoc/>
         </member>
-        <member name="M:Cancri.Web.Program.CustomLoggingProvider.CreateLogger(System.String)">
+        <member name="M:Cancri.Web.Providers.CustomLoggingProvider.CreateLogger(System.String)">
             <inheritdoc/>
         </member>
-        <member name="M:Cancri.Web.Program.CustomLoggingProvider.Dispose">
+        <member name="M:Cancri.Web.Providers.CustomLoggingProvider.Dispose">
             <inheritdoc/>
         </member>
     </members>

@@ -4,7 +4,7 @@
 <AntDesign.Pro.Layout.BasicLayout Logo="@("https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg")"
                                   MenuData="_menuData">
     <RightContentRender>
-        🍀
+        🍳
     </RightContentRender>
     <ChildContent>
         @Body
@@ -14,7 +14,7 @@
 
 @code
 { private readonly MenuDataItem[] _menuData =
-          {
+                  {
         new MenuDataItem
         {
             Path = "/",
@@ -26,8 +26,7 @@
         {
             Path = "/download-manage",
             Name = "下载管理",
-            Key = "download",
+            Key = "download-manage",
             Icon = "smile",
-
         }
     }; }
