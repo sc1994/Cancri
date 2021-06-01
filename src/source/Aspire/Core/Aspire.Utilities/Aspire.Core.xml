@@ -45,7 +45,7 @@
         </member>
         <member name="M:Aspire.LinqUtility.ToListAsync``1(System.Threading.Tasks.Task{System.Collections.Generic.IEnumerable{``0}})">
             <summary>
-            To List.
+            async to list.
             </summary>
             <typeparam name="T">T.</typeparam>
             <param name="sourceAsync">Source Async.</param>
@@ -53,7 +53,7 @@
         </member>
         <member name="M:Aspire.LinqUtility.ToArrayAsync``1(System.Threading.Tasks.Task{System.Collections.Generic.IEnumerable{``0}})">
             <summary>
-            To Array.
+            async to array.
             </summary>
             <typeparam name="T">T.</typeparam>
             <param name="sourceAsync">Source Async.</param>
@@ -61,7 +61,7 @@
         </member>
         <member name="M:Aspire.LinqUtility.ToArrayAsync``1(System.Threading.Tasks.Task{System.Collections.Generic.List{``0}})">
             <summary>
-            To Array.
+            async to array.
             </summary>
             <typeparam name="T">T.</typeparam>
             <param name="sourceAsync">Source Async.</param>

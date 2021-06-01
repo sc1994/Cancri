@@ -37,7 +37,6 @@ namespace Cancri.Service.FileService
         /// </summary>
         /// <param name="path">path.</param>
         /// <returns>file item list.</returns>
-        [HttpGet("{path}")]
         public IEnumerable<FileItemDto> Get(string path)
         {
             path = HttpUtility.UrlDecode(path);

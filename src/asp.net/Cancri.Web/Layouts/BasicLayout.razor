@@ -12,9 +12,9 @@
 </AntDesign.Pro.Layout.BasicLayout>
 <SettingDrawer />
 
-@code
-{ private readonly MenuDataItem[] _menuData =
-                  {
+@code{ 
+    private readonly MenuDataItem[] _menuData = new []
+    {
         new MenuDataItem
         {
             Path = "/",
@@ -29,4 +29,5 @@
             Key = "download-manage",
             Icon = "smile",
         }
-    }; }
+    }; 
+}

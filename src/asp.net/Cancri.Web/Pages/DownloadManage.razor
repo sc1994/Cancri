@@ -1,42 +1,104 @@
 @using Microsoft.Extensions.Logging;
 @using Cancri.Dto.FileService;
 @using System.Web;
+@using Cancri.Web.Store;
 
 @page "/download-manage"
 @inject ILogger<DownloadManage> logger;
-@inject IJSRuntime js;
+@inject DownloadManageStore store;
 @inject HttpClient request;
 
 <PageContainer Title="下载管理">
-    <AntDesign.Input @bind-Value="rootPath">
-        <AddOnBefore>root</AddOnBefore>
-        <AddOnAfter>
-            <Icon Type="setting" OnClick="@setRootPath"></Icon>
-        </AddOnAfter>
-    </AntDesign.Input>
+    <AntDesign.Breadcrumb>
+        @foreach (var item in breadcrumbs)
+        {
+            <AntDesign.BreadcrumbItem>
+                <AntDesign.Button Type="link" OnClick="()=>GotoFolder(item.Key)">@item.Value</AntDesign.Button>
+            </AntDesign.BreadcrumbItem>
+        }
+    </AntDesign.Breadcrumb>
+    <br />
+    <AntDesign.Table DataSource="@fileList" PageSize="9999">
+        <AntDesign.Column @bind-Field="context.Name">
+            @if (context.IsFolder)
+            {
+                <AntDesign.Button Type="link" OnClick="()=>GotoFolder(context.Name)">@context.Name</AntDesign.Button>
+            }
+            else
+            {
+                <span>@context.Name</span>
+            }
+        </AntDesign.Column>
+        <AntDesign.Column @bind-Field="context.Size" Width="80"></AntDesign.Column>
+        <AntDesign.Column @bind-Field="context.CreateTime" Width="180"></AntDesign.Column>
+        <AntDesign.Column @bind-Field="context.LastWriteTime" Width="180"></AntDesign.Column>
+    </AntDesign.Table>
+
 </PageContainer>
 
 @code{
-    string rootPath = "/";
     const string downloadRootPathKey = "down_load_root_path";
+    IEnumerable<FileItemDto> fileList = new List<FileItemDto>();
+    Dictionary<string, string> breadcrumbs = new Dictionary<string, string>();
 
-    private async void setRootPath()
+    private async Task GotoFolder(string fileName)
     {
-        this.logger.LogInformation("setRootPath:{0}", rootPath);
+        this.logger.LogInformation("goto folder: " + fileName);
 
-        var res = await request.GetAsync($"/api/file/{HttpUtility.UrlEncode(rootPath)}");
-
-        var data = await res.Content.ReadFromJsonAsync<IEnumerable<FileItemDto>>();
-
-        await this.js.InvokeVoidAsync("localStorage.setItem", "down_load_root_path", rootPath);
+        await this.SetFileList(await this.store.GetCurrentPath() + "/" + fileName);
     }
 
     protected override async Task OnInitializedAsync()
     {
-        var jsRes = await this.js.InvokeAsync<string>("localStorage.getItem", "down_load_root_path");
-        this.logger.LogInformation("OnInitializedAsync:{0}", jsRes);
-        this.rootPath = jsRes;
+        this.logger.LogInformation(await this.store.GetCurrentPath());
+        this.logger.LogInformation(await this.store.GetRootPath());
+
+        var currentPath = await this.store.GetCurrentPath();
+        if (string.IsNullOrWhiteSpace(currentPath))
+        {
+            currentPath = await this.store.GetRootPath();
+        }
+
+        this.logger.LogInformation("OnInitializedAsync:获取上次的访问路径:{0}", currentPath);
+
+        await this.SetFileList(currentPath);
 
         await base.OnInitializedAsync();
+    }
+
+    private async Task SetFileList(string path)
+    {
+        this.logger.LogInformation(path);
+
+        breadcrumbs.Clear();
+        var tmpPath = "";
+        foreach (var item in path.Split(new[] { '\\', '/' }))
+        {
+            tmpPath += item;
+            breadcrumbs.Add(tmpPath, item);
+            tmpPath += "/";
+            this.logger.LogInformation(tmpPath);
+        }
+
+        var res = await this.request.GetAsync($"/api/file?path={HttpUtility.UrlEncode(path)}");
+        var data = await res.Content.ReadFromJsonAsync<List<FileItemDto>>();
+        if (!await IsRootPath())
+        {
+            data.Insert(0, new FileItemDto
+            {
+                Name = "../",
+                IsFolder = true
+            });
+        }
+        this.fileList = data;
+        if (true) // 请求成功的情况下 才设置缓存
+        {
+            await this.store.SetCurrentPath(path);
+        }
+    }
+
+    private async Task<bool> IsRootPath()
+    {
+        return await this.store.GetCurrentPath() == await this.store.GetRootPath();
     }
 }

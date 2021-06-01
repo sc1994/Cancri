@@ -12,6 +12,7 @@ namespace Cancri.Web
     using AntDesign.Pro.Layout;
 
     using Cancri.Web.Providers;
+    using Cancri.Web.Store;
 
     using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
     using Microsoft.Extensions.DependencyInjection;
@@ -38,6 +39,9 @@ namespace Cancri.Web
                 BaseAddress = new Uri("http://localhost:5001"),
 #endif
             });
+
+            builder.Services.AddSingleton<DownloadManageStore, DownloadManageStore>();
+
             builder.Services.AddAntDesign();
             builder.Services.Configure<ProSettings>(builder.Configuration.GetSection("ProSettings"));
 

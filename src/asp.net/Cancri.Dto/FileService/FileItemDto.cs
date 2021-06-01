@@ -30,25 +30,26 @@ namespace Cancri.Dto.FileService
         {
             this.Name = name;
             this.IsFolder = isFolder;
+            const decimal unit = 1024;
             if (sizeInByte < 0)
             {
                 this.Size = "--";
             }
-            else if (sizeInByte < 1024)
+            else if (sizeInByte < unit)
             {
-                this.Size = sizeInByte + "byte";
+                this.Size = $"{sizeInByte}byte";
             }
-            else if (sizeInByte < 1024 * 1024)
+            else if (sizeInByte < unit * unit)
             {
-                this.Size = sizeInByte + "KB";
+                this.Size = $"{sizeInByte / unit:0.##}KB";
             }
-            else if (sizeInByte < 1024 * 1024 * 1024)
+            else if (sizeInByte < unit * unit * unit)
             {
-                this.Size = sizeInByte + "MB";
+                this.Size = $"{sizeInByte / unit / unit:0.##}MB";
             }
             else
             {
-                this.Size = sizeInByte + "GB";
+                this.Size = $"{sizeInByte / unit / unit / unit:0.##}GB";
             }
 
             this.CreateTime = createTime;
@@ -58,26 +59,26 @@ namespace Cancri.Dto.FileService
         /// <summary>
         /// Gets or sets name.
         /// </summary>
-        public string Name { get; set; }
+        public virtual string Name { get; set; }
 
         /// <summary>
         /// Gets or sets a value indicating whether is folder.
         /// </summary>
-        public bool IsFolder { get; set; }
+        public virtual bool IsFolder { get; set; }
 
         /// <summary>
         /// Gets or sets size.
         /// </summary>
-        public string Size { get; set; }
+        public virtual string Size { get; set; }
 
         /// <summary>
         /// Gets or sets 创建时间.
         /// </summary>
-        public DateTime CreateTime { get; set; }
+        public virtual DateTime CreateTime { get; set; }
 
         /// <summary>
         /// Gets or sets 最后写入时间.
         /// </summary>
-        public DateTime? LastWriteTime { get; set; }
+        public virtual DateTime? LastWriteTime { get; set; }
     }
 }
