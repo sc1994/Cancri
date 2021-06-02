@@ -2,6 +2,7 @@
 @using Cancri.Dto.FileService;
 @using System.Web;
 @using Cancri.Web.Store;
+@using System.Linq;
 
 @page "/download-manage"
 @inject ILogger<DownloadManage> logger;
@@ -37,7 +38,6 @@
 </PageContainer>
 
 @code{
-    const string downloadRootPathKey = "down_load_root_path";
     IEnumerable<FileItemDto> fileList = new List<FileItemDto>();
     Dictionary<string, string> breadcrumbs = new Dictionary<string, string>();
 
@@ -45,7 +45,17 @@
     {
         this.logger.LogInformation("goto folder: " + fileName);
 
-        await this.SetFileList(await this.store.GetCurrentPath() + "/" + fileName);
+        var path = await this.store.GetCurrentPath();
+        if (fileName == "../")
+        {
+            var tmpArr = path.Split('/');
+            path = string.Join("/", tmpArr.Take(tmpArr.Length - 1));
+        }
+        else
+        {
+            path += "/" + fileName;
+        }
+        await this.SetFileList(path);
     }
 
     protected override async Task OnInitializedAsync()
@@ -82,7 +92,13 @@
 
         var res = await this.request.GetAsync($"/api/file?path={HttpUtility.UrlEncode(path)}");
         var data = await res.Content.ReadFromJsonAsync<List<FileItemDto>>();
-        if (!await IsRootPath())
+
+        if (true) // TODO 请求成功的情况下 才设置缓存
+        {
+            await this.store.SetCurrentPath(path);
+        }
+
+        if (!await IsRootPath(path))
         {
             data.Insert(0, new FileItemDto
             {
@@ -91,14 +107,10 @@
             });
         }
         this.fileList = data;
-        if (true) // 请求成功的情况下 才设置缓存
-        {
-            await this.store.SetCurrentPath(path);
-        }
     }
 
-    private async Task<bool> IsRootPath()
+    private async Task<bool> IsRootPath(string path)
     {
-        return await this.store.GetCurrentPath() == await this.store.GetRootPath();
+        return path == await this.store.GetRootPath();
     }
 }
